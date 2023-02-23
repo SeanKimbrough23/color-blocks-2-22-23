@@ -9,9 +9,7 @@ function OnReady() {
     $('#green-btn').on('click', addAGreenBlockOfColor);
     $('#yellow-btn').on('click', addAYellowBlockOfColor);
     $('.cancelMe').on('click', onCancel);
-function onCancel() {
-    console.log('$this) is', $(this));
-}
+
 
 function addARedBlockOfColor() {
     console.log('Add a Red Block to Dom', addARedBlockOfColor);
@@ -30,19 +28,26 @@ function addAYellowBlockOfColor (){
     $('#blocks').append(`<div class="block yellow-fill"></div> `)
 }
 function onCancel() {
+    $('.blocks').on('click', onCancel, $(this));
     console.log('$this) is', $(this));
-
-    function updateCountOnClick (){
-    let updateCountOnClick = number++;
-    console.log('When Button is Clicked Count Updates', updateCountOnClick);
-   clicks += 1;
-    $('.buttons').on('click' , updateCountOnClick)
+}
+function updateCountOnClick (){
+    let button = document.getElementById("red-btn"),
+    count = 0;
+    button.onclick = function() {
+    count += 1;
+    button.innerHTML = 'Red:' + count;
+  } 
 }
 
- 
+// function updateCountOnClick (){
+//     let updateCountOnClick = number++;
+//     console.log('When Button is Clicked Count Updates', updateCountOnClick);
+//    //clicks += 1;
+//     $('.buttons').append(`<div id="red-btn"></div> `, clicks++);
 
  
   
 
-}
+
 };
